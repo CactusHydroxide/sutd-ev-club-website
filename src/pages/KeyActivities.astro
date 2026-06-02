@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../Components/BaseLayout.astro';
+import Card from '../Components/Card.astro';
+import activities from '../data/keyActivity.json';
+---
+
+<style>
+    .cardContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 1200px) {
+        .cardContainer {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cardContainer {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<BaseLayout title="testing">
+    <div class="cardContainer">
+        {
+            activities.map((item) => (
+                <Card
+                    title={item.title}
+                    date={item.date}
+                    banner={item.banner}
+                    content={item.content}
+                />
+            ))
+        }
+    </div>
+</BaseLayout>

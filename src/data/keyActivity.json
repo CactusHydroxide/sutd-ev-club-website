@@ -1,0 +1,37 @@
+[
+  {
+    "id": "activity-1",
+    "title": "OMg a cAR?",
+    "date": "1970-01-01",
+    "banner": "https://placehold.co/800x600",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": "activity-2",
+    "title": "Driving in my carrrr",
+    "date": "1970-01-01",
+    "banner": "https://placehold.co/800x600",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": "activity-3",
+    "title": "weewooweewoo",
+    "date": "1970-01-01",
+    "banner": "https://placehold.co/800x600",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": "activity-4",
+    "title": "yes",
+    "date": "1970-01-01",
+    "banner": "https://placehold.co/800x600",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": "activity-5",
+    "title": "bee moviet",
+    "date": "1970-01-01",
+    "banner": "https://m.media-amazon.com/images/I/71gN7I-9cwL._AC_UF894,1000_QL80_.jpg",
+    "content": "According to all known laws of aviation, there is no way a bee should be able to fly.\nIts wings are too small to get its fat According to all known laws of aviation, there is no way a bee should be able to fly.\nIts wings are too small to get its fat"
+  }
+]

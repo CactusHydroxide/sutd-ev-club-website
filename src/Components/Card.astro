@@ -1,0 +1,94 @@
+---
+const { title, date, banner, content } = Astro.props;
+let card_id = `${title}_${date}`;
+---
+
+<style>
+    /* Card */
+    .card {
+        height: auto;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: var(--space-lg);
+    }
+
+    .card * {
+        position: relative;
+        margin: var(--space-sm);
+        transition: all 0.2s ease;
+    }
+
+    .card img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 15px;
+        margin: 0;
+
+        transform-origin: top center;
+        z-index: 0;
+    }
+
+    .card:hover img {
+        filter: brightness(0.8);
+        transform: scale(1.75);
+    }
+
+    .card .title {
+        font-family: var(--header-font);
+        color: var(--color-text);
+        font-size: 1.75rem;
+        z-index: 1;
+        text-decoration: none;
+    }
+
+    .card:hover .title {
+        text-decoration: 2px solid currentColor;
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        color: var(--color-action);
+    }
+
+    .card p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+        color: var(--color-subtext);
+    }
+
+    .card:hover p {
+        color: var(--color-bg);
+    }
+
+    /* Dialog */
+    dialog {
+        width: 80%;
+        height: 80%;
+        border: none;
+        border-radius: 15px;
+    }
+</style>
+
+<div>
+    <div class="card" id={card_id}>
+        <img src={banner} alt={title} />
+        <div class="content">
+            <p class="title">{title}</p>
+            <p>{content}</p>
+        </div>
+    </div>
+    <dialog id={`dialog_${card_id}`}>
+        <icon></icon>
+    </dialog>
+</div>
+
+<script define:vars={{ card_id }} is:inline>
+    const card_element = document.getElementById(card_id);
+    const dialog_element = document.getElementById(`dialog_${card_id}`);
+    console.log(dialog_element);
+
+    card_element.addEventListener('click', () => {
+        dialog_element.showModal();
+    });
+</script>

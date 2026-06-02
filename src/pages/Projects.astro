@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../Components/BaseLayout.astro';
+---
+
+<script>
+    // i cannot be bothered to fight typescript for this
+    // @ts-nocheck
+
+    const nav = document.querySelector('.nav');
+    const bubble = nav.querySelector('.bubble');
+    const links = nav.querySelectorAll('a');
+
+    let activeIndex = 0;
+
+    function moveBubble(el) {
+        const rect = el.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+
+        bubble.style.width = `${rect.width}px`;
+        bubble.style.transform = `translateX(${rect.left - navRect.left}px)`;
+    }
+
+    function setActive(index) {
+        activeIndex = index;
+
+        links.forEach((l, i) => {
+            l.classList.toggle('active', i === index);
+        });
+
+        moveBubble(links[index]);
+    }
+
+    // init
+    setActive(0);
+
+    // click interaction
+    links.forEach((link, i) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            setActive(i);
+        });
+
+        // optional hover preview
+        // link.addEventListener('mouseenter', () => {
+        //     moveBubble(link);
+        // });
+
+        // link.addEventListener('mouseleave', () => {
+        //     moveBubble(links[activeIndex]);
+        // });
+    });
+
+    // keep aligned on resize
+    window.addEventListener('resize', () => {
+        moveBubble(links[activeIndex]);
+    });
+</script>
+
+<style>
+    .nav {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        padding: 0.5rem;
+    }
+
+    .nav a {
+        position: relative;
+        z-index: 1;
+
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .bubble {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        width: 0;
+
+        background: #dbeafe;
+        border-radius: 999px;
+
+        z-index: 0;
+
+        transition:
+            transform 0.3s ease,
+            width 0.3s ease;
+    }
+</style>
+
+<BaseLayout title="testing"></BaseLayout>
+    <div class="nav">
+        <div class="bubble"></div>
+        <a>Project A</a>
+        <a>Project B Long name ahhh</a>
+        <a>Project C</a>
+        <a>Project D</a>
+    </div>
+
+    <div style="height:800px;">text page content</div>
+</BaseLayout>
